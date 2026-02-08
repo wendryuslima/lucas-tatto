@@ -18,7 +18,7 @@ const Stats = () => {
           alt=""
           fill
           sizes="100vw"
-          className="object-cover opacity-5"
+          className="object-cover opacity-20"
         />
       </div>
 
