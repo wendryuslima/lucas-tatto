@@ -98,6 +98,7 @@ export const translations = {
     },
     footer: {
       rights: "Reservados todos los derechos",
+      backToTop: "Volver al inicio",
     },
     whatsapp: {
       ariaLabel: "Abrir conversación en WhatsApp",
@@ -200,6 +201,7 @@ export const translations = {
     },
     footer: {
       rights: "Todos os direitos reservados",
+      backToTop: "Voltar para o topo",
     },
     whatsapp: {
       ariaLabel: "Abrir conversa no WhatsApp",
