@@ -1,7 +1,14 @@
+﻿"use client";
+
 import Image from "next/image";
 import { ArrowDown } from "lucide-react";
+import { translations } from "@/lib/translations";
+import { useLanguage } from "./language-provider";
 
 const Hero = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <section
       id="home"
@@ -10,7 +17,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         <Image
           src="/imagem-lucas.jpeg"
-          alt="Tattoo Studio"
+          alt={t.hero.imageAlt}
           fill
           sizes="100vw"
           className="object-cover opacity-40"
@@ -23,12 +30,12 @@ const Hero = () => {
         <div className="max-w-2xl">
           <div className="mb-8">
             <h1 className="text-5xl md:text-7xl mb-4 tracking-tight">
-              Lucas Tatto
+              {t.hero.title}
             </h1>
           </div>
 
           <p className="text-lg md:text-xl mb-8 text-gray-300 max-w-xl leading-relaxed">
-            Historias únicas transformadas en arte que vive en la piel.
+            {t.hero.tagline}
           </p>
         </div>
       </div>

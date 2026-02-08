@@ -1,10 +1,15 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import { motion } from "motion/react";
 import Stats from "./statistic";
+import { translations } from "@/lib/translations";
+import { useLanguage } from "./language-provider";
 
 const About = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <>
       <section id="historia" className="py-20 md:py-32 overflow-x-hidden">
@@ -34,60 +39,13 @@ const About = () => {
               className="space-y-6"
             >
               <h2 className="text-4xl mt-4 text-center md:text-5xl tracking-tight uppercase border-b border-white pb-4 text-white">
-                Mi historia
-                Mi historia
+                {t.about.historyTitle}
               </h2>
 
               <div className="space-y-4 text-gray-300 leading-relaxed">
-                <p>
-                  Este año cumplo 10 años en el mundo del tatuaje y elegí que
-                  este también fuera el momento de hacer realidad un sueño
-                  antiguo: salir de Brasil por primera vez para tatuar en el
-                  extranjero.
-                </p>
-
-                <p>
-                  Barcelona no fue una elección aleatoria ni una decisión tomada
-                  a la ligera. Fue una elección que nació desde el corazón.
-                </p>
-
-                <p>
-                  En 2025, tuve el placer de pasar mis vacaciones durante el
-                  verano europeo y conocer varias ciudades. Entre todas ellas,
-                  Barcelona fue la que más me marcó. La vibra de la ciudad, la
-                  energía de sus calles y la calidez de su gente me tocaron de
-                  una forma especial. Fue allí donde sentí que debía regresar,
-                  no como turista, sino como tatuador.
-                </p>
-
-                <p>
-                  Durante ese viaje conocí a Digo, un tatuador brasileño
-                  propietario de un estudio ubicado cerca de la Sagrada Familia.
-                  La conexión fue inmediata. Fue él quien me invitó a trabajar
-                  en su estudio y me brindó la oportunidad de tatuar en
-                  Barcelona. Todo ocurrió de manera natural, como si las cosas
-                  estuvieran alineadas para suceder en ese momento.
-                </p>
-
-                <p>
-                  Elegí Barcelona para marcar un hito tan importante en mi
-                  carrera: mi primera Eurotour, celebrando 10 años de dedicación
-                  al tatuaje.
-                </p>
-
-                <p>
-                  Estoy viviendo un sueño. Cada tatuaje realizado aquí será
-                  hecho con entrega total, no solo por el aspecto económico,
-                  sino por la experiencia, el aprendizaje y la oportunidad de
-                  ejercer lo que amo en un lugar donde realmente me sentí en
-                  casa.
-                </p>
-
-                <p>
-                  Espero cumplir plenamente las expectativas de cada persona que
-                  confió en mí. Pueden estar seguros de que cada trabajo es
-                  realizado con alma y corazón.
-                </p>
+                {t.about.historyParagraphs.map((paragraph, index) => (
+                  <p key={`history-${index}`}>{paragraph}</p>
+                ))}
               </div>
             </motion.div>
           </div>
@@ -106,7 +64,7 @@ const About = () => {
             >
               <Image
                 src="/bandeira_espanha-removebg-preview.png"
-                alt="Bandeira da Espanha"
+                alt={t.about.spainFlagAlt}
                 width={512}
                 height={512}
                 sizes="(min-width: 900px) 32rem, 90vw"
@@ -122,59 +80,13 @@ const About = () => {
               className="space-y-6"
             >
               <h2 className="text-5xl text-center md:text-6xl tracking-tight uppercase border-b border-white pb-4 text-white">
-                Por qué elegí España?
+                {t.about.spainTitle}
               </h2>
 
               <div className="space-y-4 text-gray-300 leading-relaxed">
-                <p>
-                  Este año cumplo 10 años en el mundo del tatuaje y elegí que
-                  este también fuera el momento de hacer realidad un sueño
-                  antiguo: salir de Brasil por primera vez para tatuar en el
-                  extranjero.
-                </p>
-
-                <p>
-                  Barcelona no fue una elección aleatoria ni una decisión tomada
-                  a la ligera. Fue una elección que nació desde el corazón.
-                </p>
-
-                <p>
-                  En 2025, tuve el placer de pasar mis vacaciones durante el
-                  verano europeo y conocer varias ciudades. Entre todas ellas,
-                  Barcelona fue la que más me marcó. La vibra de la ciudad, la
-                  energía de sus calles y la calidez de su gente me tocaron de
-                  una forma especial. Fue allí donde sentí que debía regresar,
-                  no como turista, sino como tatuador.
-                </p>
-
-                <p>
-                  Durante ese viaje conocí a Digo, un tatuador brasileño
-                  propietario de un estudio ubicado cerca de la Sagrada Familia.
-                  La conexión fue inmediata. Fue él quien me invitó a trabajar
-                  en su estudio y me brindó la oportunidad de tatuar en
-                  Barcelona. Todo ocurrió de manera natural, como si las cosas
-                  estuvieran alineadas para suceder en ese momento.
-                </p>
-
-                <p>
-                  Elegí Barcelona para marcar un hito tan importante en mi
-                  carrera: mi primera Eurotour, celebrando 10 años de dedicación
-                  al tatuaje.
-                </p>
-
-                <p>
-                  Estoy viviendo un sueño. Cada tatuaje realizado aquí será
-                  hecho con entrega total, no solo por el aspecto económico,
-                  sino por la experiencia, el aprendizaje y la oportunidad de
-                  ejercer lo que amo en un lugar donde realmente me sentí en
-                  casa.
-                </p>
-
-                <p>
-                  Espero cumplir plenamente las expectativas de cada persona que
-                  confió en mí. Pueden estar seguros de que cada trabajo es
-                  realizado con alma y corazón.
-                </p>
+                {t.about.spainParagraphs.map((paragraph, index) => (
+                  <p key={`spain-${index}`}>{paragraph}</p>
+                ))}
               </div>
             </motion.div>
           </div>

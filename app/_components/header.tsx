@@ -1,21 +1,11 @@
 ﻿"use client";
 
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import Image from "next/image";
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Instagram, Menu, MessageCircle } from "lucide-react";
-
-const navItems = [
-  { label: "Comenzar", href: "#home" },
-  { label: "História", href: "#historia" },
-  { label: "Galería", href: "#galeria" },
-  { label: "Comentarios", href: "#depoimentos" },
-  { label: "Contacto", href: "#contato" },
-];
+import { translations } from "@/lib/translations";
+import { useLanguage } from "./language-provider";
 
 const socialItems = [
   {
@@ -31,6 +21,15 @@ const socialItems = [
 ];
 
 const Header = () => {
+  const { language, toggleLanguage } = useLanguage();
+  const t = translations[language];
+  const navItems = t.header.navItems;
+  const flagSrc = language === "es" ? "/brasil.png" : "/espanha.png";
+  const flagAlt = t.header.flagAlt;
+  const toggleLabel = t.header.toggleLabel;
+  const sheetLanguageLabel = t.header.sheetLanguageLabel;
+  const menuLabel = t.header.menuLabel;
+
   return (
     <header className="fixed top-0 left-0 right-0 h-[var(--header-height)] bg-zinc-950/95 backdrop-blur-sm z-50 border-b border-zinc-800">
       <div className="max-w-7xl mx-auto h-full px-6 py-4">
@@ -79,7 +78,7 @@ const Header = () => {
                 variant="ghost"
                 size="icon"
                 className="md:hidden text-white"
-                aria-label="Abrir menu"
+                aria-label={menuLabel}
               >
                 <Menu size={24} />
               </Button>
@@ -120,6 +119,23 @@ const Header = () => {
                     })}
                   </div>
                 </nav>
+                <div className="mt-6 pt-6 border-t border-zinc-800">
+                  <button
+                    type="button"
+                    onClick={toggleLanguage}
+                    aria-label={toggleLabel}
+                    className="flex items-center gap-3 text-sm tracking-wider uppercase text-white hover:text-gray-400 transition-colors"
+                  >
+                    <Image
+                      src={flagSrc}
+                      alt={flagAlt}
+                      width={28}
+                      height={28}
+                      className="h-7 w-7 object-contain"
+                    />
+                    <span>{sheetLanguageLabel}</span>
+                  </button>
+                </div>
               </div>
             </SheetContent>
           </Sheet>

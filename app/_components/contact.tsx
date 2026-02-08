@@ -1,13 +1,18 @@
-"use client";
+﻿"use client";
 
-import { Clock, Instagram, Mail, MapPin, MessageCircle } from "lucide-react";
+import { Instagram, Mail, MapPin, MessageCircle } from "lucide-react";
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
+import { translations } from "@/lib/translations";
+import { useLanguage } from "./language-provider";
 
 const Contact = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <section
-      id="contact"
+      id="contato"
       className="bg-zinc-950 text-white py-20 md:py-32 overflow-x-clip"
     >
       <div className="max-w-7xl mx-auto px-6">
@@ -18,7 +23,7 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-5xl text-center mb-12 md:mb-16 tracking-tight uppercase"
         >
-          Contacto
+          {t.contact.title}
         </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto min-w-0">
@@ -29,23 +34,21 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="space-y-6 min-w-0"
           >
-            <h3 className="text-2xl mb-6 tracking-wide">Ponte en contacto</h3>
+            <h3 className="text-2xl mb-6 tracking-wide">{t.contact.subtitle}</h3>
 
             <div className="space-y-4">
               <div className="flex items-start gap-4">
                 <MapPin className="mt-1 flex-shrink-0" size={20} />
                 <div>
-                  <p className="font-semibold mb-1">Estudio</p>
-                  <p className="text-gray-400">
-                    Carrel del Rosselio, 218, Eixample, 08008 Barcelona, Espanha
-                  </p>
+                  <p className="font-semibold mb-1">{t.contact.studioLabel}</p>
+                  <p className="text-gray-400">{t.contact.address}</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
                 <Mail className="mt-1 flex-shrink-0" size={20} />
                 <div>
-                  <p className="font-semibold mb-1">Correo electrónico</p>
+                  <p className="font-semibold mb-1">{t.contact.emailLabel}</p>
                   <a
                     href="mailto:contato@devila.com"
                     className="text-gray-400 hover:text-white transition-colors"
@@ -83,18 +86,13 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="flex flex-col justify-center space-y-6 bg-zinc-800 border border-zinc-700 text-white p-8 md:p-12 min-w-0"
           >
-            <h3 className="text-2xl tracking-wide">
-              ¿Estás listo para tu próximo tatuaje?
-            </h3>
-            <p className="text-gray-300">
-              Creemos juntos una obra de arte única que cuente tu historia.
-              Contáctanos y agenda una consulta.
-            </p>
+            <h3 className="text-2xl tracking-wide">{t.contact.rightTitle}</h3>
+            <p className="text-gray-300">{t.contact.rightDescription}</p>
             <Button
               type="button"
               className="bg-white text-black px-8 py-4 hover:bg-gray-200 transition-all duration-300 uppercase tracking-widest text-sm w-full"
             >
-              Solicitar una cotización
+              {t.contact.buttonLabel}
             </Button>
           </motion.div>
         </div>

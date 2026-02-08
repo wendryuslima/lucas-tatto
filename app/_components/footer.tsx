@@ -1,4 +1,12 @@
-﻿const Footer = () => {
+﻿"use client";
+
+import { translations } from "@/lib/translations";
+import { useLanguage } from "./language-provider";
+
+const Footer = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <footer className="bg-zinc-950 border-t border-zinc-800 py-8">
       <div className="max-w-7xl mx-auto px-6">
@@ -11,7 +19,7 @@
           </div>
 
           <p className="text-sm text-gray-400">
-            © {new Date().getFullYear()} Reservados todos los derechos
+            © {new Date().getFullYear()} {t.footer.rights}
           </p>
         </div>
       </div>
