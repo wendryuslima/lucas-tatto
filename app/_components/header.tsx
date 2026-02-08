@@ -6,14 +6,15 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 import { Instagram, Menu, MessageCircle } from "lucide-react";
 
 const navItems = [
-  { label: "Home", href: "#home" },
+  { label: "Comenzar", href: "#home" },
   { label: "História", href: "#historia" },
-  { label: "Galeria", href: "#galeria" },
-  { label: "Feedbacks", href: "#depoimentos" },
-  { label: "Contato", href: "#contato" },
+  { label: "Galería", href: "#galeria" },
+  { label: "Comentarios", href: "#depoimentos" },
+  { label: "Contacto", href: "#contato" },
 ];
 
 const socialItems = [
@@ -73,9 +74,15 @@ const Header = () => {
 
           <Sheet>
             <SheetTrigger asChild>
-              <button className="md:hidden text-white" aria-label="Abrir menu">
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon"
+                className="md:hidden text-white"
+                aria-label="Abrir menu"
+              >
                 <Menu size={24} />
-              </button>
+              </Button>
             </SheetTrigger>
             <SheetContent
               side="right"

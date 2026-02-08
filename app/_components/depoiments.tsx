@@ -31,7 +31,7 @@ const Depoiments = () => {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-5xl text-center mb-12 md:mb-16 tracking-tight uppercase text-white"
         >
@@ -44,7 +44,7 @@ const Depoiments = () => {
               key={depoiment.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{
                 duration: 0.5,
                 delay: index * 0.15,

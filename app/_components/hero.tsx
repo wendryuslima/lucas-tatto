@@ -28,7 +28,7 @@ const Hero = () => {
           </div>
 
           <p className="text-lg md:text-xl mb-8 text-gray-300 max-w-xl leading-relaxed">
-            Histórias únicas transformadas em arte que vive na pele
+            Historias únicas transformadas en arte que vive en la piel.
           </p>
         </div>
       </div>

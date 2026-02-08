@@ -1,0 +1,22 @@
+﻿const Footer = () => {
+  return (
+    <footer className="bg-zinc-950 border-t border-zinc-800 py-8">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-white flex items-center justify-center">
+              <span className="text-black font-serif">LS</span>
+            </div>
+            <span className="text-sm text-gray-400">Lucas Silva</span>
+          </div>
+
+          <p className="text-sm text-gray-400">
+            © {new Date().getFullYear()} Reservados todos los derechos
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
