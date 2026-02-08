@@ -1,6 +1,7 @@
 ﻿"use client";
 
-import { Instagram, Mail, MapPin, MessageCircle } from "lucide-react";
+import Image from "next/image";
+import { Instagram, Mail, MapPin } from "lucide-react";
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { translations } from "@/lib/translations";
@@ -76,7 +77,13 @@ const Contact = () => {
                 rel="noopener noreferrer"
                 className="w-12 h-12 border border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300"
               >
-                <MessageCircle size={20} />
+                <Image
+                  src="/whatsapp-icon.svg"
+                  alt="WhatsApp"
+                  width={20}
+                  height={20}
+                  className="w-5 h-5"
+                />
               </a>
             </div>
           </motion.div>
