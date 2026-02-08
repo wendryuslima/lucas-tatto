@@ -33,7 +33,7 @@ type SocialItem =
 const socialItems: SocialItem[] = [
   {
     label: "Instagram",
-    href: "https://instagram.com",
+    href: "https://www.instagram.com/lucastatt00s/",
     icon: Instagram,
   },
   {
