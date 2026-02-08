@@ -1,13 +1,31 @@
 ﻿"use client";
 
 import Image from "next/image";
+import type { MouseEvent } from "react";
+import { useEffect, useState } from "react";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Instagram, Menu, MessageCircle } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { Instagram, Menu } from "lucide-react";
 import { translations } from "@/lib/translations";
 import { useLanguage } from "./language-provider";
 
-const socialItems = [
+type SocialItem =
+  | {
+      label: string;
+      href: string;
+      icon: LucideIcon;
+    }
+  | {
+      label: string;
+      href: string;
+      imageSrc: string;
+      imageAlt?: string;
+      width?: number;
+      height?: number;
+    };
+
+const socialItems: SocialItem[] = [
   {
     label: "Instagram",
     href: "https://instagram.com",
@@ -16,7 +34,8 @@ const socialItems = [
   {
     label: "WhatsApp",
     href: "https://wa.me/5511999999999",
-    icon: MessageCircle,
+    imageSrc: "/whatsapp-icon.svg",
+    imageAlt: "WhatsApp",
   },
 ];
 
@@ -29,6 +48,92 @@ const Header = () => {
   const toggleLabel = t.header.toggleLabel;
   const sheetLanguageLabel = t.header.sheetLanguageLabel;
   const menuLabel = t.header.menuLabel;
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState(
+    navItems[0]?.href.replace("#", "") ?? "",
+  );
+
+  useEffect(() => {
+    const sectionIds = navItems
+      .map((item) => item.href.replace("#", ""))
+      .filter(Boolean);
+
+    if (sectionIds.length === 0) {
+      return;
+    }
+
+    const getHeaderOffset = () => {
+      const rootStyles = window.getComputedStyle(document.documentElement);
+      const rawValue = rootStyles.getPropertyValue("--header-height").trim();
+      const fontSize = parseFloat(rootStyles.fontSize) || 16;
+
+      if (rawValue.endsWith("rem")) {
+        const remValue = parseFloat(rawValue);
+        return Number.isNaN(remValue) ? 72 : remValue * fontSize;
+      }
+
+      if (rawValue.endsWith("px")) {
+        const pxValue = parseFloat(rawValue);
+        return Number.isNaN(pxValue) ? 72 : pxValue;
+      }
+
+      const fallbackValue = parseFloat(rawValue);
+      return Number.isNaN(fallbackValue) ? 72 : fallbackValue;
+    };
+
+    const updateActiveSection = () => {
+      const scrollPosition = window.scrollY + getHeaderOffset() + 1;
+      let currentSection = sectionIds[0];
+
+      for (const sectionId of sectionIds) {
+        const section = document.getElementById(sectionId);
+        if (!section) {
+          continue;
+        }
+
+        if (section.offsetTop <= scrollPosition) {
+          currentSection = sectionId;
+        }
+      }
+
+      setActiveSection(currentSection);
+    };
+
+    updateActiveSection();
+
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, [navItems]);
+  const handleNavClick = (
+    event: MouseEvent<HTMLAnchorElement>,
+    href: string,
+    closeSheet = false
+  ) => {
+    if (!href.startsWith("#")) {
+      return;
+    }
+
+    event.preventDefault();
+    const target = document.querySelector(href);
+
+    if (!target) {
+      return;
+    }
+
+    if (closeSheet) {
+      setSheetOpen(false);
+    }
+
+    const delay = closeSheet ? 200 : 0;
+    window.setTimeout(() => {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, delay);
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 h-[var(--header-height)] bg-zinc-950/95 backdrop-blur-sm z-50 border-b border-zinc-800">
@@ -45,6 +150,7 @@ const Header = () => {
               <a
                 key={item.href}
                 href={item.href}
+                onClick={(event) => handleNavClick(event, item.href)}
                 className="text-sm tracking-wider hover:text-gray-400 transition-colors uppercase text-white"
               >
                 {item.label}
@@ -54,6 +160,27 @@ const Header = () => {
 
           <div className="hidden md:flex items-center gap-4">
             {socialItems.map((item) => {
+              if ("imageSrc" in item) {
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={item.label}
+                    className="hover:text-gray-400 transition-colors text-white"
+                  >
+                    <Image
+                      src={item.imageSrc}
+                      alt={item.imageAlt ?? item.label}
+                      width={item.width ?? 20}
+                      height={item.height ?? 20}
+                      className="h-5 w-5 object-contain"
+                    />
+                  </a>
+                );
+              }
+
               const Icon = item.icon;
 
               return (
@@ -71,7 +198,7 @@ const Header = () => {
             })}
           </div>
 
-          <Sheet>
+          <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
             <SheetTrigger asChild>
               <Button
                 type="button"
@@ -93,7 +220,12 @@ const Header = () => {
                     <SheetClose key={item.href} asChild>
                       <a
                         href={item.href}
-                        className="text-sm tracking-wider hover:text-gray-400 transition-colors uppercase text-left text-white"
+                        onClick={(event) => handleNavClick(event, item.href, true)}
+                        className={`text-sm tracking-wider hover:text-gray-400 transition-colors uppercase text-left text-white border-l-2 pl-4 ${
+                          activeSection === item.href.replace("#", "")
+                            ? "border-white"
+                            : "border-transparent"
+                        }`}
                       >
                         {item.label}
                       </a>
@@ -101,6 +233,28 @@ const Header = () => {
                   ))}
                   <div className="flex gap-4 mt-4">
                     {socialItems.map((item) => {
+                      if ("imageSrc" in item) {
+                        return (
+                          <SheetClose key={item.href} asChild>
+                            <a
+                              href={item.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={item.label}
+                              className="hover:text-gray-400 transition-colors text-white"
+                            >
+                              <Image
+                                src={item.imageSrc}
+                                alt={item.imageAlt ?? item.label}
+                                width={item.width ?? 20}
+                                height={item.height ?? 20}
+                                className="h-5 w-5 object-contain"
+                              />
+                            </a>
+                          </SheetClose>
+                        );
+                      }
+
                       const Icon = item.icon;
 
                       return (
