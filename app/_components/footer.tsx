@@ -4,6 +4,7 @@ import { ArrowUp } from "lucide-react";
 import type { MouseEvent } from "react";
 import { translations } from "@/lib/translations";
 import { useLanguage } from "./language-provider";
+import Image from "next/image";
 
 const Footer = () => {
   const { language } = useLanguage();
@@ -24,8 +25,13 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-white flex items-center justify-center">
-              <span className="text-black font-serif">LS</span>
+            <div className="w-8 h-8  flex items-center justify-center">
+              <Image
+                height={120}
+                width={120}
+                alt="logo-lucas"
+                src="/logo-lt-removebg-preview.png"
+              />
             </div>
             <span className="text-sm text-gray-400">Lucas Silva</span>
           </div>
