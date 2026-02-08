@@ -1,9 +1,16 @@
+import Header from "./_components/header";
+import Hero from "./_components/hero";
+
+
 const Home = () => {
   return (
-    <div>
-      ola mundo
-    </div>
+    <>
+      <Header />
+      <main>
+        <Hero />
+      </main>
+    </>
   );
-}
+};
 
 export default Home;
