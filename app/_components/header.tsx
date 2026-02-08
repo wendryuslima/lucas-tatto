@@ -38,7 +38,7 @@ const socialItems: SocialItem[] = [
   },
   {
     label: "WhatsApp",
-    href: "https://wa.me/5511999999999",
+    href: "https://wa.me/5511993461896",
     imageSrc: "/whatsapp-icon.svg",
     imageAlt: "WhatsApp",
   },
@@ -145,8 +145,15 @@ const Header = () => {
       <div className="max-w-7xl mx-auto h-full px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-white flex items-center justify-center">
-              <span className="text-black text-xl font-serif">LT</span>
+            <div className="w-10 h-10 flex items-center justify-center">
+              <Image
+                src="/logo-lt-removebg-preview.png"
+                alt="LT"
+                width={40}
+                height={40}
+                className="h-10 w-10 object-contain"
+                priority
+              />
             </div>
           </div>
 

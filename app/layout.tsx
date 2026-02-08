@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   title: "Lucas Tatto",
   description:
     "Portfólio de Lucas Tatto: tatuagens autorais, agenda e contato.",
+  icons: {
+    icon: "/logo-lt-removebg-preview.png",
+  },
 };
 
 export default function RootLayout({

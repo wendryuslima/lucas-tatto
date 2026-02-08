@@ -24,8 +24,14 @@ const About = () => {
             >
               <div className="relative w-64 h-64 md:w-80 md:h-80">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-white text-9xl font-serif border-4 border-white w-full h-full flex items-center justify-center">
-                    LT
+                  <div className="relative border-4 border-white w-full h-full">
+                    <Image
+                      src="/logo-lt-removebg-preview.png"
+                      alt="LT"
+                      fill
+                      sizes="(min-width: 768px) 20rem, 16rem"
+                      className="object-contain p-6"
+                    />
                   </div>
                 </div>
               </div>

@@ -2,33 +2,70 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
+import { useEffect, useState } from "react";
 import { translations } from "@/lib/translations";
 import { useLanguage } from "./language-provider";
 
 const works = [
   {
     id: 1,
-    src: "/imagem-tatto-1.jpg",
+    src: "/WhatsApp%20Image%202026-02-08%20at%2017.00.19.jpeg",
   },
   {
     id: 2,
-    src: "/imagem-tatto-2.jpg",
+    src: "/WhatsApp%20Image%202026-02-08%20at%2017.00.20%20(1).jpeg",
   },
   {
     id: 3,
-    src: "/imagem-tatto-3.jpg",
+    src: "/WhatsApp%20Image%202026-02-08%20at%2017.00.20%20(2).jpeg",
   },
   {
     id: 4,
-    src: "/tatto-4.jpg",
+    src: "/WhatsApp%20Image%202026-02-08%20at%2017.00.20%20(3).jpeg",
   },
   {
     id: 5,
-    src: "/imagem-tatto-1.jpg",
+    src: "/WhatsApp%20Image%202026-02-08%20at%2017.00.20%20(4).jpeg",
   },
   {
     id: 6,
-    src: "/imagem-tatto-3.jpg",
+    src: "/WhatsApp%20Image%202026-02-08%20at%2017.00.20-6.jpeg",
+  },
+  {
+    id: 7,
+    src: "/WhatsApp%20Image%202026-02-08%20at%2017.00.21%207.jpeg",
+  },
+  {
+    id: 8,
+    src: "/WhatsApp%20Image%202026-02-08%20at%2017.00.21%208.jpeg",
+  },
+  {
+    id: 9,
+    src: "/WhatsApp%20Image%202026-02-08%20at%2017.00.21%209.jpeg",
+  },
+  {
+    id: 10,
+    src: "/WhatsApp%20Image%202026-02-08%20at%2017.00.21%2010.jpeg",
+  },
+  {
+    id: 11,
+    src: "/WhatsApp%20Image%202026-02-08%20at%2017.05.09%2011.jpeg",
+  },
+  {
+    id: 12,
+    src: "/WhatsApp%20Image%202026-02-08%20at%2017.05.10%2012.jpeg",
+  },
+  {
+    id: 13,
+    src: "/WhatsApp%20Image%202026-02-08%20at%2017.05.10%2013.jpeg",
+  },
+  {
+    id: 14,
+    src: "/WhatsApp%20Image%202026-02-08%20at%2017.05.10%2014.jpeg",
+  },
+  {
+    id: 15,
+    src: "/WhatsApp%20Image%202026-02-08%20at%2017.05.10%2015.jpeg",
   },
 ];
 
@@ -40,11 +77,23 @@ const Works = () => {
     alt: t.works.items[index],
   }));
 
-  const columns = [
-    [worksWithAlt[0], worksWithAlt[1]],
-    [worksWithAlt[2], worksWithAlt[3]],
-    [worksWithAlt[4], worksWithAlt[5]],
-  ];
+  const [columnCount, setColumnCount] = useState(2);
+
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 1024px)");
+    const updateColumns = () => setColumnCount(media.matches ? 3 : 2);
+    updateColumns();
+    media.addEventListener("change", updateColumns);
+    return () => media.removeEventListener("change", updateColumns);
+  }, []);
+
+  const columns: typeof worksWithAlt[] = Array.from(
+    { length: columnCount },
+    () => []
+  );
+  worksWithAlt.forEach((work, index) => {
+    columns[index % columnCount].push(work);
+  });
 
   return (
     <section id="galeria" className="bg-zinc-950 text-white py-20 md:py-32">
@@ -59,7 +108,7 @@ const Works = () => {
           {t.works.title}
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
           {columns.map((column, columnIndex) => (
             <div
               key={`column-${columnIndex}`}
@@ -81,7 +130,7 @@ const Works = () => {
                       delay: (columnIndex * 2 + workIndex) * 0.1,
                     }}
                     className={`group relative overflow-hidden rounded-2xl cursor-pointer ${
-                      isTall ? "aspect-[4/5]" : "aspect-[4/3]"
+                      isTall ? "aspect-[4/5]" : "aspect-[4/4.2]"
                     }`}
                   >
                     <Image

@@ -34,7 +34,9 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="space-y-6 min-w-0"
           >
-            <h3 className="text-2xl mb-6 tracking-wide">{t.contact.subtitle}</h3>
+            <h3 className="text-2xl mb-6 tracking-wide">
+              {t.contact.subtitle}
+            </h3>
 
             <div className="space-y-4">
               <div className="flex items-start gap-4">
@@ -69,7 +71,7 @@ const Contact = () => {
                 <Instagram size={20} />
               </a>
               <a
-                href="https://wa.me/5511999999999"
+                href="https://wa.me/5511993461896"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 border border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300"
