@@ -171,6 +171,22 @@ const Header = () => {
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              onClick={toggleLanguage}
+              aria-label={toggleLabel}
+              className="h-9 w-9 rounded-full border border-zinc-800 text-white transition-colors hover:border-zinc-600 hover:bg-transparent"
+            >
+              <Image
+                src={flagSrc}
+                alt={flagAlt}
+                width={20}
+                height={20}
+                className="h-5 w-5 object-contain"
+              />
+            </Button>
             {socialItems.map((item) => {
               if ("imageSrc" in item) {
                 return (
