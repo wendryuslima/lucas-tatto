@@ -25,7 +25,7 @@ const About = () => {
               <div className="relative w-64 h-64 md:w-80 md:h-80">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-white text-9xl font-serif border-4 border-white w-full h-full flex items-center justify-center">
-                    LS
+                    LT
                   </div>
                 </div>
               </div>

@@ -3,7 +3,12 @@
 import Image from "next/image";
 import type { MouseEvent } from "react";
 import { useEffect, useState } from "react";
-import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import type { LucideIcon } from "lucide-react";
 import { Instagram, Menu } from "lucide-react";
@@ -112,7 +117,7 @@ const Header = () => {
   const handleNavClick = (
     event: MouseEvent<HTMLAnchorElement>,
     href: string,
-    closeSheet = false
+    closeSheet = false,
   ) => {
     if (!href.startsWith("#")) {
       return;
@@ -141,7 +146,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-10 h-10 bg-white flex items-center justify-center">
-              <span className="text-black text-xl font-serif">LS</span>
+              <span className="text-black text-xl font-serif">LT</span>
             </div>
           </div>
 
@@ -220,7 +225,9 @@ const Header = () => {
                     <SheetClose key={item.href} asChild>
                       <a
                         href={item.href}
-                        onClick={(event) => handleNavClick(event, item.href, true)}
+                        onClick={(event) =>
+                          handleNavClick(event, item.href, true)
+                        }
                         className={`text-sm tracking-wider hover:text-gray-400 transition-colors uppercase text-left text-white border-l-2 pl-4 ${
                           activeSection === item.href.replace("#", "")
                             ? "border-white"
