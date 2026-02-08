@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
+import Stats from "./statistic";
 
 const About = () => {
   return (
@@ -32,7 +33,8 @@ const About = () => {
               transition={{ duration: 0.6 }}
               className="space-y-6"
             >
-              <h2 className="text-4xl md:text-5xl tracking-tight uppercase border-b border-white pb-4 text-white">
+              <h2 className="text-4xl mt-4 text-center md:text-5xl tracking-tight uppercase border-b border-white pb-4 text-white">
+                Mi historia
                 Mi historia
               </h2>
 
@@ -92,7 +94,7 @@ const About = () => {
         </div>
       </section>
 
-      <section id="espanha" className="overflow-x-hidden">
+      <section id="espanha" className="overflow-x-hidden pb-6">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-4 md:gap-6 items-start">
             <motion.div
@@ -178,6 +180,8 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      <Stats />
     </>
   );
 };
