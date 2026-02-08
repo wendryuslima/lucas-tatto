@@ -52,44 +52,39 @@ const About = () => {
         </div>
       </section>
 
-      <section id="espanha" className="overflow-x-hidden pb-6">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-4 md:gap-6 items-start">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-              className="flex items-center justify-center"
-            >
-              <Image
-                src="/bandeira_espanha-removebg-preview.png"
-                alt={t.about.spainFlagAlt}
-                width={512}
-                height={512}
-                sizes="(min-width: 900px) 32rem, 90vw"
-                className="w-full max-w-[32rem] h-auto object-contain -mb-4 md:-mb-6"
-              />
-            </motion.div>
+      <section
+        id="espanha"
+        className="relative min-h-screen overflow-hidden flex items-center"
+      >
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/bandeira_espanha-removebg-preview.png"
+            alt={t.about.spainFlagAlt}
+            fill
+            sizes="100vw"
+            className="object-cover opacity-40"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/80 via-zinc-950/50 to-transparent"></div>
+        </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-              className="space-y-6"
-            >
-              <h2 className="text-5xl text-center md:text-6xl tracking-tight uppercase border-b border-white pb-4 text-white">
-                {t.about.spainTitle}
-              </h2>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-28 w-full">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col items-center text-center space-y-6"
+          >
+            <h2 className="text-5xl md:text-6xl tracking-tight uppercase border-b border-white pb-4 text-white">
+              {t.about.spainTitle}
+            </h2>
 
-              <div className="space-y-4 text-gray-300 leading-relaxed">
-                {t.about.spainParagraphs.map((paragraph, index) => (
-                  <p key={`spain-${index}`}>{paragraph}</p>
-                ))}
-              </div>
-            </motion.div>
-          </div>
+            <div className="space-y-4 text-gray-300 leading-relaxed max-w-2xl">
+              {t.about.spainParagraphs.map((paragraph, index) => (
+                <p key={`spain-${index}`}>{paragraph}</p>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
