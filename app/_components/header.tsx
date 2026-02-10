@@ -171,6 +171,10 @@ const Header = () => {
   };
 
   const handleLanguageChange = (value: string) => {
+    if (value === language) {
+      return;
+    }
+
     if (value === "es" || value === "pt" || value === "en") {
       setLanguage(value);
     }
@@ -198,6 +202,8 @@ const Header = () => {
               <a
                 key={item.href}
                 href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={(event) => handleNavClick(event, item.href)}
                 className="text-sm tracking-wider hover:text-gray-400 transition-colors uppercase text-white"
               >
@@ -295,6 +301,8 @@ const Header = () => {
                     <SheetClose key={item.href} asChild>
                       <a
                         href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         onClick={(event) =>
                           handleNavClick(event, item.href, true)
                         }

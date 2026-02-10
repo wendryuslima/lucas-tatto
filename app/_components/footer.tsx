@@ -42,6 +42,8 @@ const Footer = () => {
 
           <a
             href="#home"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={handleBackToTop}
             className="text-xs md:text-sm text-gray-400 hover:text-white transition-colors inline-flex items-center gap-2"
           >

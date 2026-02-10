@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { translations } from "@/lib/translations";
 import { useLanguage } from "./language-provider";
+import Link from "next/link";
 
 const Contact = () => {
   const { language } = useLanguage();
@@ -54,6 +55,8 @@ const Contact = () => {
                   <p className="font-semibold mb-1">{t.contact.emailLabel}</p>
                   <a
                     href="mailto:contato@devila.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white transition-colors"
                   >
                     lucas@exemplo.com
@@ -64,7 +67,7 @@ const Contact = () => {
 
             <div className="flex gap-4 pt-6">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/lucastatt00s/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 border border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300"
@@ -97,12 +100,18 @@ const Contact = () => {
           >
             <h3 className="text-2xl tracking-wide">{t.contact.rightTitle}</h3>
             <p className="text-gray-300">{t.contact.rightDescription}</p>
-            <Button
-              type="button"
-              className="bg-white text-black px-8 py-4 hover:bg-gray-200 transition-all duration-300 uppercase tracking-widest text-sm w-full"
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://wa.me/5511993461896"
             >
-              {t.contact.buttonLabel}
-            </Button>
+              <Button
+                type="button"
+                className="bg-white text-black px-8 py-4 hover:bg-gray-200 transition-all duration-300 uppercase tracking-widest text-sm w-full"
+              >
+                {t.contact.buttonLabel}
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </div>
