@@ -5,6 +5,7 @@ import { Instagram, Mail, MapPin } from "lucide-react";
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { translations } from "@/lib/translations";
+import { trackWhatsAppClick } from "@/lib/meta-pixel";
 import { useLanguage } from "./language-provider";
 import Link from "next/link";
 
@@ -78,6 +79,7 @@ const Contact = () => {
                 href="https://wa.me/5511993461896"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={trackWhatsAppClick}
                 className="w-12 h-12 border border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300"
               >
                 <Image
@@ -104,6 +106,7 @@ const Contact = () => {
               target="_blank"
               rel="noopener noreferrer"
               href="https://wa.me/5511993461896"
+              onClick={trackWhatsAppClick}
             >
               <Button
                 type="button"

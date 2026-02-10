@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { trackWhatsAppClick } from "@/lib/meta-pixel";
 
 type HeroCtaProps = {
   label: string;
@@ -10,6 +11,12 @@ type HeroCtaProps = {
 };
 
 const HeroCta = ({ label, href, className }: HeroCtaProps) => {
+  const handleClick = () => {
+    if (href.includes("wa.me") || href.includes("whatsapp.com")) {
+      trackWhatsAppClick();
+    }
+  };
+
   return (
     <Button
       asChild
@@ -24,6 +31,7 @@ const HeroCta = ({ label, href, className }: HeroCtaProps) => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={label}
+        onClick={handleClick}
       >
         {label}
       </a>

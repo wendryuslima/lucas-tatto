@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { translations } from "@/lib/translations";
+import { trackWhatsAppClick } from "@/lib/meta-pixel";
 import { useLanguage } from "./language-provider";
 
 const WhatsappFloat = () => {
@@ -14,6 +15,7 @@ const WhatsappFloat = () => {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={t.whatsapp.ariaLabel}
+      onClick={trackWhatsAppClick}
       className="fixed bottom-6 right-1 z-50 w-10 h-10 md:w-16 md:h-16 rounded-full shadow-[0_12px_30px_rgba(0,0,0,0.35)] flex items-center justify-center transition-transform duration-200 hover:scale-105"
     >
       <Image

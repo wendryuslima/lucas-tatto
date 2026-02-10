@@ -20,6 +20,7 @@ import {
 import type { LucideIcon } from "lucide-react";
 import { Instagram, Menu } from "lucide-react";
 import { translations, type Language } from "@/lib/translations";
+import { trackWhatsAppClick } from "@/lib/meta-pixel";
 import { useLanguage } from "./language-provider";
 
 
@@ -51,6 +52,9 @@ const socialItems: SocialItem[] = [
     imageAlt: "WhatsApp",
   },
 ];
+
+const isWhatsAppLink = (href: string) =>
+  href.includes("wa.me") || href.includes("whatsapp.com");
 
 const Header = () => {
   const { language, setLanguage } = useLanguage();
@@ -241,6 +245,9 @@ const Header = () => {
               </SelectContent>
             </Select>
             {socialItems.map((item) => {
+              const handleClick = isWhatsAppLink(item.href)
+                ? trackWhatsAppClick
+                : undefined;
               if ("imageSrc" in item) {
                 return (
                   <a
@@ -249,6 +256,7 @@ const Header = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={item.label}
+                    onClick={handleClick}
                     className="hover:text-gray-400 transition-colors text-white"
                   >
                     <Image
@@ -271,6 +279,7 @@ const Header = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={item.label}
+                  onClick={handleClick}
                   className="hover:text-gray-400 transition-colors text-white"
                 >
                   <Icon size={20} />
@@ -318,6 +327,9 @@ const Header = () => {
                   ))}
                   <div className="flex gap-4 mt-4">
                     {socialItems.map((item) => {
+                      const handleClick = isWhatsAppLink(item.href)
+                        ? trackWhatsAppClick
+                        : undefined;
                       if ("imageSrc" in item) {
                         return (
                           <SheetClose key={item.href} asChild>
@@ -326,6 +338,7 @@ const Header = () => {
                               target="_blank"
                               rel="noopener noreferrer"
                               aria-label={item.label}
+                              onClick={handleClick}
                               className="hover:text-gray-400 transition-colors text-white"
                             >
                               <Image
@@ -349,6 +362,7 @@ const Header = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={item.label}
+                            onClick={handleClick}
                             className="hover:text-gray-400 transition-colors text-white"
                           >
                             <Icon size={20} />
