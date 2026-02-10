@@ -10,10 +10,18 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import type { LucideIcon } from "lucide-react";
 import { Instagram, Menu } from "lucide-react";
-import { translations } from "@/lib/translations";
+import { translations, type Language } from "@/lib/translations";
 import { useLanguage } from "./language-provider";
+
 
 type SocialItem =
   | {
@@ -45,13 +53,35 @@ const socialItems: SocialItem[] = [
 ];
 
 const Header = () => {
-  const { language, toggleLanguage } = useLanguage();
+  const { language, setLanguage } = useLanguage();
   const t = translations[language];
   const navItems = t.header.navItems;
-  const flagSrc = language === "es" ? "/brasil.png" : "/espanha.png";
-  const flagAlt = t.header.flagAlt;
-  const toggleLabel = t.header.toggleLabel;
-  const sheetLanguageLabel = t.header.sheetLanguageLabel;
+  const languageLabel = t.header.languageLabel;
+  const languageOptions: Array<{
+    value: Language;
+    label: string;
+    flagSrc: string;
+    flagAlt: string;
+  }> = [
+    {
+      value: "es",
+      label: t.header.languageOptions.es,
+      flagSrc: "/espanha.png",
+      flagAlt: t.header.languageFlags.es,
+    },
+    {
+      value: "pt",
+      label: t.header.languageOptions.pt,
+      flagSrc: "/brasil.png",
+      flagAlt: t.header.languageFlags.pt,
+    },
+    {
+      value: "en",
+      label: t.header.languageOptions.en,
+      flagSrc: "/estados-unidos-da-america.png",
+      flagAlt: t.header.languageFlags.en,
+    },
+  ];
   const menuLabel = t.header.menuLabel;
   const [sheetOpen, setSheetOpen] = useState(false);
   const [activeSection, setActiveSection] = useState(
@@ -140,6 +170,12 @@ const Header = () => {
     }, delay);
   };
 
+  const handleLanguageChange = (value: string) => {
+    if (value === "es" || value === "pt" || value === "en") {
+      setLanguage(value);
+    }
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 h-[var(--header-height)] bg-zinc-950/95 backdrop-blur-sm z-50 border-b border-zinc-800">
       <div className="max-w-7xl mx-auto h-full px-6 py-4">
@@ -171,22 +207,33 @@ const Header = () => {
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon"
-              onClick={toggleLanguage}
-              aria-label={toggleLabel}
-              className="h-9 w-9 rounded-full border border-zinc-800 text-white transition-colors hover:border-zinc-600 hover:bg-transparent"
-            >
-              <Image
-                src={flagSrc}
-                alt={flagAlt}
-                width={20}
-                height={20}
-                className="h-5 w-5 object-contain"
-              />
-            </Button>
+            <Select value={language} onValueChange={handleLanguageChange}>
+              <SelectTrigger className="border-zinc-800  text-white bg-transparent hover:border-zinc-600 focus-visible:ring-zinc-600 focus-visible:border-zinc-600">
+                <SelectValue placeholder={languageLabel} />
+              </SelectTrigger>
+              <SelectContent
+                position="popper"
+                side="bottom"
+                sideOffset={8}
+                avoidCollisions={false}
+                className="bg-zinc-950 text-white border-zinc-800"
+              >
+                {languageOptions.map((option) => (
+                  <SelectItem key={option.value} value={option.value}>
+                    <span className="flex items-center gap-2">
+                      <Image
+                        src={option.flagSrc}
+                        alt={option.flagAlt}
+                        width={18}
+                        height={18}
+                        className="h-4 w-4 object-contain"
+                      />
+                      <span>{option.label}</span>
+                    </span>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
             {socialItems.map((item) => {
               if ("imageSrc" in item) {
                 return (
@@ -304,21 +351,41 @@ const Header = () => {
                   </div>
                 </nav>
                 <div className="mt-6 pt-6 border-t border-zinc-800">
-                  <button
-                    type="button"
-                    onClick={toggleLanguage}
-                    aria-label={toggleLabel}
-                    className="flex items-center gap-3 text-sm tracking-wider uppercase text-white hover:text-gray-400 transition-colors"
-                  >
-                    <Image
-                      src={flagSrc}
-                      alt={flagAlt}
-                      width={28}
-                      height={28}
-                      className="h-7 w-7 object-contain"
-                    />
-                    <span>{sheetLanguageLabel}</span>
-                  </button>
+                  <div className="space-y-2">
+                    <span className="text-xs tracking-widest uppercase text-gray-400">
+                      {languageLabel}
+                    </span>
+                    <Select
+                      value={language}
+                      onValueChange={handleLanguageChange}
+                    >
+                      <SelectTrigger className="w-full border-zinc-800 text-white bg-transparent hover:border-zinc-600 focus-visible:ring-zinc-600 focus-visible:border-zinc-600">
+                        <SelectValue placeholder={languageLabel} />
+                      </SelectTrigger>
+                      <SelectContent
+                        position="popper"
+                        side="bottom"
+                        sideOffset={8}
+                        avoidCollisions={false}
+                        className="bg-zinc-950 text-white border-zinc-800"
+                      >
+                        {languageOptions.map((option) => (
+                          <SelectItem key={option.value} value={option.value}>
+                            <span className="flex items-center gap-2">
+                              <Image
+                                src={option.flagSrc}
+                                alt={option.flagAlt}
+                                width={18}
+                                height={18}
+                                className="h-4 w-4 object-contain"
+                              />
+                              <span>{option.label}</span>
+                            </span>
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
                 </div>
               </div>
             </SheetContent>

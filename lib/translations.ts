@@ -1,4 +1,4 @@
-﻿export type Language = "es" | "pt";
+﻿export type Language = "es" | "pt" | "en";
 
 export const translations = {
   es: {
@@ -11,25 +11,34 @@ export const translations = {
         { label: "Contacto", href: "#contato" },
       ],
       menuLabel: "Abrir menú",
-      toggleLabel: "Cambiar idioma a portugués",
-      sheetLanguageLabel: "Português",
-      flagAlt: "Bandera de Brasil",
+      languageLabel: "Idioma",
+      languageOptions: {
+        es: "Español",
+        pt: "Portugués",
+        en: "Inglés",
+      },
+      languageFlags: {
+        es: "Bandera de España",
+        pt: "Bandera de Brasil",
+        en: "Bandera de Estados Unidos",
+      },
     },
     hero: {
-      title: "Lucas Tatto",
-      tagline: "Historias únicas transformadas en arte que vive en la piel.",
+      title: "Lucas Tattoo",
+      tagline:
+        "Diseños únicos, creados especialmente para ti, con atención total al impacto visual y la durabilidad. ",
+      tagline2: "Tatuajes que mantienen su fuerza con el paso del tiempo.",
+      ctaLabel: "Iniciar proyecto",
       imageAlt: "Estudio de tatuajes",
     },
     about: {
       historyTitle: "Mi historia",
       historyParagraphs: [
-        "Este año cumplo 10 años en el mundo del tatuaje y elegí que este también fuera el momento de hacer realidad un sueño antiguo: salir de Brasil por primera vez para tatuar en el extranjero.",
-        "Barcelona no fue una elección aleatoria ni una decisión tomada a la ligera. Fue una elección que nació desde el corazón.",
-        "En 2025, tuve el placer de pasar mis vacaciones durante el verano europeo y conocer varias ciudades. Entre todas ellas, Barcelona fue la que más me marcó. La vibra de la ciudad, la energía de sus calles y la calidez de su gente me tocaron de una forma especial. Fue allí donde sentí que debía regresar, no como turista, sino como tatuador.",
-        "Durante ese viaje conocí a Digo, un tatuador brasileño propietario de un estudio ubicado cerca de la Sagrada Familia. La conexión fue inmediata. Fue él quien me invitó a trabajar en su estudio y me brindó la oportunidad de tatuar en Barcelona. Todo ocurrió de manera natural, como si las cosas estuvieran alineadas para suceder en ese momento.",
-        "Elegí Barcelona para marcar un hito tan importante en mi carrera: mi primera Eurotour, celebrando 10 años de dedicación al tatuaje.",
-        "Estoy viviendo un sueño. Cada tatuaje realizado aquí será hecho con entrega total, no solo por el aspecto económico, sino por la experiencia, el aprendizaje y la oportunidad de ejercer lo que amo en un lugar donde realmente me sentí en casa.",
-        "Espero cumplir plenamente las expectativas de cada persona que confió en mí. Pueden estar seguros de que cada trabajo es realizado con alma y corazón.",
+        "Nacido el 15 de febrero de 1997, en Santo André, São Paulo, como la mayoría de los niños brasileños, soñaba con ser futbolista. Sin embargo, la vida tenía otros planes para mí: el arte.",
+        "Desde muy pequeño destaqué en la escuela por mi creatividad en el dibujo. Vengo de una familia humilde y crecí en una generación sin celulares ni videojuegos, donde el dibujo se convirtió en mi principal pasatiempo durante toda mi infancia y adolescencia.",
+        "En 2016, el tatuaje llegó definitivamente a mi vida. Un amigo tatuador, al ver mis dibujos, me ofreció clases de tatuaje y, en menos de tres meses, ya estaba tatuando. Dejé mi trabajo en un supermercado y me dediqué por completo a la tatuagem, sumergiéndome de lleno en el arte.",
+        "Comencé mi carrera con tatuajes fine line, destacándome por trazos finos y precisos. Con el paso de los años, desarrollé la técnica y la madurez artística necesarias para el estilo que trabajo actualmente: realismo en negro y gris, piezas de gran formato y cierres completos.",
+        "Con más de cinco años de experiencia dedicados exclusivamente a este tipo de arte, me considero un especialista en cierres y estoy preparado para ofrecerte un trabajo sólido, profesional y personalizado.",
       ],
       spainTitle: "¿Por qué elegí España?",
       spainParagraphs: [
@@ -98,8 +107,8 @@ export const translations = {
     stats: {
       items: [
         { number: "+10", label: "Años de experiencia" },
-        { number: "+3000", label: "Clientes atendidos" },
-        { number: "+5000", label: "Tatuajes realizados" },
+        { number: "+1500", label: "Clientes atendidos" },
+        { number: "+2000", label: "Tatuajes realizados" },
         { number: "100%", label: "Satisfacción garantizada" },
       ],
       closing:
@@ -123,13 +132,23 @@ export const translations = {
         { label: "Contato", href: "#contato" },
       ],
       menuLabel: "Abrir menu",
-      toggleLabel: "Mudar idioma para espanhol",
-      sheetLanguageLabel: "Español",
-      flagAlt: "Bandeira da Espanha",
+      languageLabel: "Idioma",
+      languageOptions: {
+        es: "Espanhol",
+        pt: "Português",
+        en: "Inglês",
+      },
+      languageFlags: {
+        es: "Bandeira da Espanha",
+        pt: "Bandeira do Brasil",
+        en: "Bandeira dos Estados Unidos",
+      },
     },
     hero: {
-      title: "Lucas Tatto",
+      title: "Lucas Tattoo",
       tagline: "Histórias únicas transformadas em arte que vive na pele.",
+      tagline2: "Tatuagens que mantêm sua força com o passar do tempo.",
+      ctaLabel: "Agendar agora",
       imageAlt: "Estúdio de tatuagem",
     },
     about: {
@@ -223,6 +242,127 @@ export const translations = {
     },
     whatsapp: {
       ariaLabel: "Abrir conversa no WhatsApp",
+    },
+  },
+  en: {
+    header: {
+      navItems: [
+        { label: "Home", href: "#home" },
+        { label: "Story", href: "#historia" },
+        { label: "Gallery", href: "#galeria" },
+        { label: "Testimonials", href: "#depoimentos" },
+        { label: "Contact", href: "#contato" },
+      ],
+      menuLabel: "Open menu",
+      languageLabel: "Language",
+      languageOptions: {
+        es: "Spanish",
+        pt: "Portuguese",
+        en: "English",
+      },
+      languageFlags: {
+        es: "Spain flag",
+        pt: "Brazil flag",
+        en: "United States flag",
+      },
+    },
+    hero: {
+      title: "Lucas Tattoo",
+      tagline: "Unique stories transformed into art that lives on the skin.",
+      tagline2: "Tattoos that keep their strength over time.",
+      ctaLabel: "Schedule now",
+      imageAlt: "Tattoo studio",
+    },
+    about: {
+      historyTitle: "My story",
+      historyParagraphs: [
+        "This year I celebrate 10 years in the tattoo world and chose this as the moment to make an old dream come true: leaving Brazil for the first time to tattoo abroad.",
+        "Barcelona wasn't a random choice or a decision made lightly. It was a choice born from the heart.",
+        "In 2025, I had the pleasure of spending my vacation during the European summer and visiting several cities. Among all of them, Barcelona was the one that left the biggest mark on me. The vibe of the city, the energy of its streets, and the warmth of its people touched me in a special way. It was there that I felt I had to return, not as a tourist, but as a tattoo artist.",
+        "During that trip I met Digo, a Brazilian tattoo artist who owns a studio near the Sagrada Família. The connection was immediate. He was the one who invited me to work in his studio and gave me the opportunity to tattoo in Barcelona. Everything happened naturally, as if things were aligned to happen at that moment.",
+        "I chose Barcelona to mark such an important milestone in my career: my first Eurotour, celebrating 10 years of dedication to tattooing.",
+        "I am living a dream. Every tattoo done here will be made with total dedication, not only for the financial aspect, but for the experience, the learning, and the opportunity to do what I love in a place where I truly felt at home.",
+        "I hope to fully meet the expectations of everyone who trusted me. You can be sure that every piece is done with soul and heart.",
+      ],
+      spainTitle: "Why did I choose Spain?",
+      spainParagraphs: [
+        "This year I celebrate 10 years in the tattoo world and chose this as the moment to make an old dream come true: leaving Brazil for the first time to tattoo abroad.",
+        "Barcelona wasn't a random choice or a decision made lightly. It was a choice born from the heart.",
+        "In 2025, I had the pleasure of spending my vacation during the European summer and visiting several cities. Among all of them, Barcelona was the one that left the biggest mark on me. The vibe of the city, the energy of its streets, and the warmth of its people touched me in a special way. It was there that I felt I had to return, not as a tourist, but as a tattoo artist.",
+        "During that trip I met Digo, a Brazilian tattoo artist who owns a studio near the Sagrada Família. The connection was immediate. He was the one who invited me to work in his studio and gave me the opportunity to tattoo in Barcelona. Everything happened naturally, as if things were aligned to happen at that moment.",
+        "I chose Barcelona to mark such an important milestone in my career: my first Eurotour, celebrating 10 years of dedication to tattooing.",
+        "I am living a dream. Every tattoo done here will be made with total dedication, not only for the financial aspect, but for the experience, the learning, and the opportunity to do what I love in a place where I truly felt at home.",
+        "I hope to fully meet the expectations of everyone who trusted me. You can be sure that every piece is done with soul and heart.",
+      ],
+      spainFlagAlt: "Spain flag",
+    },
+    works: {
+      title: "My work",
+      items: [
+        "Realistic arm tattoo",
+        "Black ink portrait",
+        "Tattoo sleeve in progress",
+        "Minimalist geometric design",
+        "Realistic shading detail",
+        "Fine line tattoo",
+        "Floral tattoo on forearm",
+        "Black and gray composition",
+        "Ornamental style tattoo",
+        "Texture and contrast detail",
+        "Botanical tattoo in black and gray",
+        "Composition with soft shading",
+        "Delicate ornamental tattoo",
+        "Light and shadow contrast",
+        "Realistic close-up detail",
+      ],
+    },
+    depoiments: {
+      title: "Testimonials",
+      starsLabel: "Five-star rating",
+      items: [
+        {
+          name: "Diego Santos",
+          description:
+            "Incredible tattoo, the linework and quality were out of the ordinary. The next step is finishing my back.",
+        },
+        {
+          name: "Victor Sanches",
+          description:
+            "Lucas is an incredible professional; I'd wanted it for a long time. An amazing tattoo — his quality is impeccable.",
+        },
+        {
+          name: "Victoria Periera",
+          description:
+            "I finished my back and it turned out incredible. I'd cover my whole body; I highly recommend him.",
+        },
+      ],
+    },
+    contact: {
+      title: "Contact",
+      subtitle: "Get in touch",
+      studioLabel: "Studio",
+      address: "Carrer del Rosselló, 218, Eixample, 08008 Barcelona, Spain",
+      emailLabel: "Email",
+      rightTitle: "Are you ready for your next tattoo?",
+      rightDescription:
+        "Let's create together a unique work of art that tells your story. Get in touch and schedule a consultation.",
+      buttonLabel: "Request a quote",
+    },
+    stats: {
+      items: [
+        { number: "+10", label: "Years of experience" },
+        { number: "+3000", label: "Clients served" },
+        { number: "+5000", label: "Tattoos completed" },
+        { number: "100%", label: "Guaranteed satisfaction" },
+      ],
+      closing: "We deliver more than tattoos: they're marks that tell a story",
+    },
+    footer: {
+      rights: "All rights reserved",
+      backToTop: "Back to top",
+    },
+    whatsapp: {
+      ariaLabel: "Open WhatsApp chat",
     },
   },
 } as const;

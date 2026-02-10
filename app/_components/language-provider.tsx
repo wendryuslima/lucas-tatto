@@ -30,7 +30,11 @@ export const LanguageProvider = ({
   }, [language]);
 
   const toggleLanguage = () => {
-    setLanguage((current) => (current === "es" ? "pt" : "es"));
+    const order: Language[] = ["es", "pt", "en"];
+    setLanguage((current) => {
+      const index = order.indexOf(current);
+      return order[(index + 1) % order.length] ?? "es";
+    });
   };
 
   const value = useMemo(
