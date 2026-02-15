@@ -3,9 +3,10 @@
 import Image from "next/image";
 import { Instagram, Mail, MapPin } from "lucide-react";
 import { motion } from "motion/react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/app/_components/ui/button";
 import { translations } from "@/lib/translations";
 import { trackWhatsAppClick } from "@/lib/meta-pixel";
+import { WHATSAPP_LINK } from "@/lib/whatsapp";
 import { useLanguage } from "./language-provider";
 import Link from "next/link";
 
@@ -76,7 +77,7 @@ const Contact = () => {
                 <Instagram size={20} />
               </a>
               <a
-                href="https://wa.me/5511993461896"
+                href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={trackWhatsAppClick}
@@ -105,7 +106,7 @@ const Contact = () => {
             <Link
               target="_blank"
               rel="noopener noreferrer"
-              href="https://wa.me/5511993461896"
+              href={WHATSAPP_LINK}
               onClick={trackWhatsAppClick}
             >
               <Button

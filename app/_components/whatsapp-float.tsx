@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { translations } from "@/lib/translations";
 import { trackWhatsAppClick } from "@/lib/meta-pixel";
+import { WHATSAPP_LINK } from "@/lib/whatsapp";
 import { useLanguage } from "./language-provider";
 
 const WhatsappFloat = () => {
@@ -11,7 +12,7 @@ const WhatsappFloat = () => {
 
   return (
     <a
-      href="https://wa.me/5511993461896"
+      href={WHATSAPP_LINK}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={t.whatsapp.ariaLabel}

@@ -8,21 +8,21 @@ import {
   SheetClose,
   SheetContent,
   SheetTrigger,
-} from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
+} from "@/app/_components/ui/sheet";
+import { Button } from "@/app/_components/ui/button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/app/_components/ui/select";
 import type { LucideIcon } from "lucide-react";
 import { Instagram, Menu } from "lucide-react";
 import { translations, type Language } from "@/lib/translations";
 import { trackWhatsAppClick } from "@/lib/meta-pixel";
+import { WHATSAPP_LINK } from "@/lib/whatsapp";
 import { useLanguage } from "./language-provider";
-
 
 type SocialItem =
   | {
@@ -47,7 +47,7 @@ const socialItems: SocialItem[] = [
   },
   {
     label: "WhatsApp",
-    href: "https://wa.me/5511993461896",
+    href: WHATSAPP_LINK,
     imageSrc: "/whatsapp-icon.svg",
     imageAlt: "WhatsApp",
   },

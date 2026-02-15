@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ArrowDown } from "lucide-react";
 import { motion } from "motion/react";
 import { translations } from "@/lib/translations";
+import { WHATSAPP_LINK } from "@/lib/whatsapp";
 import { useLanguage } from "./language-provider";
 import HeroCta from "./hero-cta";
 
@@ -62,7 +63,7 @@ const Hero = () => {
           >
             <HeroCta
               label={t.hero.ctaLabel}
-              href="https://wa.me/5511993461896"
+              href={WHATSAPP_LINK}
             />
           </motion.div>
         </div>
